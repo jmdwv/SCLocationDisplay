@@ -12,6 +12,7 @@ $z = 2896115.502795
 $curx = 0
 $cury = 0
 $curz = 0
+$curdist = 0
 
 #note that the first display may be weird
 Write-Host "First display doesn't have enough info, so ignore it and I'll take it out later"
@@ -30,6 +31,13 @@ $array = (Get-Clipboard).split(":").Split(" ")
 $curx = $array[3]
 $cury = $array[5]
 $curz = $array[7]
+
+#Total Distance Away
+$lastdist = $curdist
+$curdist = [math]::Sqrt([math]::pow($curx - $x,2) + [math]::pow($cury - $y,2) + [math]::pow($curz - $z,2))
+if ($curdist -lt 20) {Write-Host "Distance = $curdist" -ForegroundColor yellow}elseif ($curdist -gt $lastdist) {Write-Host "Distance = $curdist" -ForegroundColor red}else{Write-Host "Distance = $curdist" -ForegroundColor green}
+
+
 
 #is X closer?
 $diffcurx = $x - $curx
@@ -52,6 +60,8 @@ if ($diffcurz -lt 0) {$diffcurz = $diffcurz * -1}
 $difflastz = $z - $lastz
 if ($difflastz -lt 0) {$difflastz = $difflastz * -1}
 if ($diffcurz -lt 11) {Write-Host "Z = $curz          $diffcurz away" -ForegroundColor yellow}elseif($diffcurz -gt $difflastz){Write-Host "Z = $curz          $diffcurz away" -ForegroundColor red}else{Write-Host "Z = $curz          $diffcurz away" -ForegroundColor green}
+
+[math]::Sqrt([math]::pow($curx - $x,2) + [math]::pow($cury - $y,2) + [math]::pow($curz - $z,2))
 
 
 #This loop makes it only update the screen when new data is in the clipboard
