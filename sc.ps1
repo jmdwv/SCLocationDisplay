@@ -16,7 +16,7 @@ $curdist = 0
 
 #note that the first display may be weird
 Write-Host "First display doesn't have enough info, so ignore it and I'll take it out later"
-Write-Host "Also uses live data in your clib board, so if you copy something while multitasking, data will be weird"
+Write-Host "Also uses live data in your clip board, so if you copy something while multitasking, data will be weird"
 
 #get into the endless loop (I doubt I'll actually get right on the point)
 do {
@@ -35,7 +35,8 @@ $curz = $array[7]
 #Total Distance Away
 $lastdist = $curdist
 $curdist = [math]::Sqrt([math]::pow($curx - $x,2) + [math]::pow($cury - $y,2) + [math]::pow($curz - $z,2))
-if ($curdist -lt 20) {Write-Host "Distance = $curdist" -ForegroundColor yellow}elseif ($curdist -gt $lastdist) {Write-Host "Distance = $curdist" -ForegroundColor red}else{Write-Host "Distance = $curdist" -ForegroundColor green}
+$strCurdist = $curdist.ToString('N0')
+if ($curdist -lt 20000) {Write-Host "Distance = $curdist" -ForegroundColor yellow}elseif ($curdist -gt $lastdist) {Write-Host "Distance = $strCurdist" -ForegroundColor red}else{Write-Host "Distance = $strCurdist" -ForegroundColor green}
 
 
 
@@ -44,14 +45,18 @@ $diffcurx = $x - $curx
 if ($diffcurx -lt 0) {$diffcurx = $diffcurx * -1}
 $difflastx = $x - $lastx
 if ($difflastx -lt 0) {$difflastx = $difflastx * -1}
-if ($diffcurx -lt 11) {Write-Host "X = $curx      $diffcurx away" -ForegroundColor yellow}elseif ($diffcurx -gt $difflastx) {Write-Host "X = $curx      $diffcurx away" -ForegroundColor red} else{Write-Host "X = $curx      $diffcurx away" -ForegroundColor green}
+
+$strDiffcurX = $diffcurx.ToString('N0')
+if ($diffcurx -lt 10000) {Write-Host "X = $curx      $strDiffcurX away" -ForegroundColor yellow}elseif ($diffcurx -gt $difflastx) {Write-Host "X = $curx      $strDiffcurX away" -ForegroundColor red} else{Write-Host "X = $curx      $strDiffcurX away" -ForegroundColor green}
 
 #is Y closer?
 $diffcury = $y - $cury
 if ($diffcury -lt 0) {$diffcury = $diffcury * -1}
 $difflasty = $y - $lasty
 if ($difflasty -lt 0) {$difflasty = $difflasty * -1}
-if ($diffcury -lt 11) {Write-Host "Y = $cury      $diffcury away" -ForegroundColor yellow}elseif ($diffcury -gt $difflasty) {Write-Host "Y = $cury      $diffcury away" -ForegroundColor red}else{Write-Host "Y = $cury      $diffcury away" -ForegroundColor green}
+
+$strDiffcurY = $diffcury.ToString('N0')
+if ($diffcury -lt 10000) {Write-Host "Y = $cury      $strDiffcurY away" -ForegroundColor yellow}elseif ($diffcury -gt $difflasty) {Write-Host "Y = $cury      $strDiffcurY away" -ForegroundColor red}else{Write-Host "Y = $cury      $strDiffcurY away" -ForegroundColor green}
 
 
 #is Z closer?
@@ -59,10 +64,9 @@ $diffcurz = $z - $curz
 if ($diffcurz -lt 0) {$diffcurz = $diffcurz * -1}
 $difflastz = $z - $lastz
 if ($difflastz -lt 0) {$difflastz = $difflastz * -1}
-if ($diffcurz -lt 11) {Write-Host "Z = $curz          $diffcurz away" -ForegroundColor yellow}elseif($diffcurz -gt $difflastz){Write-Host "Z = $curz          $diffcurz away" -ForegroundColor red}else{Write-Host "Z = $curz          $diffcurz away" -ForegroundColor green}
 
-[math]::Sqrt([math]::pow($curx - $x,2) + [math]::pow($cury - $y,2) + [math]::pow($curz - $z,2))
-
+$strDiffcurZ = $diffcurz.ToString('N0')
+if ($diffcurz -lt 10000) {Write-Host "Z = $curz          $strDiffcurZ away" -ForegroundColor yellow}elseif($diffcurz -gt $difflastz){Write-Host "Z = $curz          $strDiffcurZ away" -ForegroundColor red}else{Write-Host "Z = $curz          $strDiffcurZ away" -ForegroundColor green}
 
 #This loop makes it only update the screen when new data is in the clipboard
 do {Start-Sleep 1
