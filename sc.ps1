@@ -35,10 +35,10 @@ $curz = $array[7]
 #Total Distance Away
 $lastdist = $curdist
 $curdist = [math]::Sqrt([math]::pow($curx - $x,2) + [math]::pow($cury - $y,2) + [math]::pow($curz - $z,2))
+
+#convert the distance to a string that is easier to read
 $strCurdist = $curdist.ToString('N0')
-if ($curdist -lt 20000) {Write-Host "Distance = $curdist" -ForegroundColor yellow}elseif ($curdist -gt $lastdist) {Write-Host "Distance = $strCurdist" -ForegroundColor red}else{Write-Host "Distance = $strCurdist" -ForegroundColor green}
-
-
+if ($curdist -lt 20000) {Write-Host "Distance = $strCurdist" -ForegroundColor yellow}elseif ($curdist -gt $lastdist) {Write-Host "Distance = $strCurdist" -ForegroundColor red}else{Write-Host "Distance = $strCurdist" -ForegroundColor green}
 
 #is X closer?
 $diffcurx = $x - $curx
