@@ -4,8 +4,8 @@ Write-Host "Getting Closer" -ForegroundColor green
 Write-Host "Really Close" -ForegroundColor Yellow
 
 #where I want to go
-$x = 20196776410.415634
-$y = 33456387485.680557
+$x = 3310489488.075857
+$y = -27979310575.799255
 $z = 2896115.502795
 
 #set currents to a value because math
