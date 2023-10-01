@@ -5,7 +5,7 @@ Write-Host "Really Close" -ForegroundColor Yellow
 
 #where I want to go
 $x = 3310489488.075857
-$y = -27979310575.799255
+$y = -27979401332.704884
 $z = -2676280493.708758
 
 #set currents to a value because math
