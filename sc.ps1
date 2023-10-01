@@ -6,7 +6,7 @@ Write-Host "Really Close" -ForegroundColor Yellow
 #where I want to go
 $x = 3310489488.075857
 $y = -27979310575.799255
-$z = 2896115.502795
+$z = -2676280493.708758
 
 #set currents to a value because math
 $curx = 0
