@@ -1,2 +1,4 @@
 Don't really know where this will go
 While the /showlocation command puts the XYZ coordinates in the clipboard, this should work
+
+Edit - updated the script's default where I want to go variables to the new Pyro Jump Point Coordinates 
